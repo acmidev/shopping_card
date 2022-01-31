@@ -1,19 +1,46 @@
 const buttonBuy = document.querySelector('.buy');
 const buttonRent = document.querySelector('.rent');
-var cart = document.querySelector('.buy-card')
+const closeCart = document.getElementById('close-cart')
+const cart = document.querySelector('.cart-icon')
+const cartCard = document.querySelector('.buy-card')
 
 
-buttonBuy.addEventListener('click', buyCard);
-buttonRent.addEventListener('click', saludar);
 
 
-function saludar(){
+
+cart.addEventListener('click', openCart);
+closeCart.addEventListener('click', close)
+cart.onc
+
+cart.classList.add('inactive')
+
+function openCart (){
+    
+    if(cart.classList.contains('inactive')){
+        cart.classList.add('active')
+        cart.classList.remove('inactive')
+    }
+    else{cart.classList.add('inactive')
+         cart.classList.remove('active')   }
+    
+    
+
+    if(cart.classList.contains('active')){
+        cartCard.style.visibility = "visible"
+    }else{
+        cartCard.style.visibility = "hidden"
+    }
    
-    console.log("hola")
-};
-
-function buyCard (){
-    cart.style.visibility = "visible"
+    
 }
 
+function close () {
+
+
+    cartCard.style.visibility = "hidden"
+    if(cart.classList.contains('active')){
+    cart.classList.remove('active')
+    cart.classList.add('inactive')
+    }
+}
 
