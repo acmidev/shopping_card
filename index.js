@@ -10,9 +10,15 @@ const cartCard = document.querySelector('.buy-card')
 
 cart.addEventListener('click', openCart);
 closeCart.addEventListener('click', close)
-cart.onc
+buttonBuy.addEventListener('click', addToCart)
+
 
 cart.classList.add('inactive')
+
+
+
+
+
 
 function openCart (){
     
@@ -42,5 +48,38 @@ function close () {
     cart.classList.remove('active')
     cart.classList.add('inactive')
     }
+}
+
+function addToCart (){
+    let productTitle = document.getElementById('product-title').innerHTML
+    let productPrice = document.getElementById('product-price').innerHTML
+    let productsCartDiv = document.querySelector('.cart-products-card')
+    let productsPriceDiv = document.querySelector('.cart-products-total')
+   
+    console.log(productPrice)
+
+    let p = document.createElement("p")
+    let x = document.createElement("SPAN")
+    let a = document.createElement("p")
+
+    
+    p.innerHTML = productTitle
+    x.innerHTML = `x${1}`
+    a.innerHTML = productPrice
+    
+
+
+    productsCartDiv.appendChild(p)
+    p.appendChild(x)
+
+    
+    
+    productsPriceDiv.appendChild(a)
+    
+    
+
+    
+
+    
 }
 
