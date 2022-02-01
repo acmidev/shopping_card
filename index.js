@@ -1,20 +1,46 @@
-const buttonBuy = document.querySelector('.buy');
+const buttonBuy = document.querySelectorAll('.buy');
 const buttonRent = document.querySelector('.rent');
 const closeCart = document.getElementById('close-cart')
 const cart = document.querySelector('.cart-icon')
 const cartCard = document.querySelector('.buy-card')
+var divInfo = document.getElementsByClassName('card')
 
 
 
+//Products
+
+class product {
+    constructor(id,title, price ){
+        this.id = id;
+        this.title = title;
+        this.price = price;
+    }
+}
+
+var bicycle = new product(122, "Bicycle", 199)
+var motorbike = new product(233, "Motorbike", 399)
+var car = new product(344, "Car", 1299)
+
+
+var products = {
+    bicycle,motorbike,car
+}
+
+
+///////////////////////////////////////////////////////////////////
 
 
 cart.addEventListener('click', openCart);
 closeCart.addEventListener('click', close)
-buttonBuy.addEventListener('click', addToCart)
+
+buttonBuy.forEach(function(currentButton) {
+    currentButton.addEventListener('click', getId)
+})
+
+
 
 
 cart.classList.add('inactive')
-
 
 
 
@@ -50,20 +76,51 @@ function close () {
     }
 }
 
+
+
+
+
+
+function getId(){
+    let id = document.getElementById('122')
+    let child_nodes = id.child_nodes
+    console.log(id)
+    
+
+
+  
+}
+
 function addToCart (){
-    let productTitle = document.getElementById('product-title').innerHTML
+
+    console.log(buttonBuy.parentNode.id)
+    
+    
+    
+
+}
+
+ /* function addToCart (){
+    let productTitle = products
     let productPrice = document.getElementById('product-price').innerHTML
     let productsCartDiv = document.querySelector('.cart-products-card')
     let productsPriceDiv = document.querySelector('.cart-products-total')
+
+    
    
-    console.log(productPrice)
+    
+
+    
+
+
+    
 
     let p = document.createElement("p")
     let x = document.createElement("SPAN")
     let a = document.createElement("p")
 
     
-    p.innerHTML = productTitle
+    
     x.innerHTML = `x${1}`
     a.innerHTML = productPrice
     
@@ -83,3 +140,5 @@ function addToCart (){
     
 }
 
+
+ */

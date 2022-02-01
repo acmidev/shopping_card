@@ -3,13 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+.grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin:0 50px ;
+    margin-top:50px
+}
 
 .container{
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    height: 30vh
+    
+  
+    
     
 }
 .card{
@@ -19,7 +24,13 @@
     background: #ffffff;
     box-shadow:  18px 18px 36px #e6e6e6,
                  -18px -18px 36px #ffffff;
+    overflow: hidden
     
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
@@ -78,7 +89,7 @@
 
 .buy-card{
     display:grid;
-   
+    opacity: 0.96;
     visibility: hidden;
     position: absolute;
     width: 500px;
