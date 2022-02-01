@@ -9,11 +9,11 @@ var grid = document.getElementById('grid')
 
 //Cart 
 
-let cartList = {}
+var cartList = {}
 
 //Products
 
-class product {
+/* class product {
     constructor(id,title, price ){
         this.id = id;
         this.title = title;
@@ -28,7 +28,7 @@ var car = new product(344, "Car", 1299)
 
 var products = {
     bicycle,motorbike,car
-}
+} */
 
 
 ///////////////////////////////////////////////////////////////////
@@ -95,11 +95,15 @@ const addCart = e => {
         setCart(e.target.closest('.container'))
         
     }
+    
+
+    console.log(cartList)
+
     e.stopPropagation()
 }
 
 const setCart = objeto =>{
-    console.log(objeto)
+   
     const producto = {
         id: objeto.querySelector('.buy').id,
         title: objeto.querySelector('.product-title').textContent,
@@ -109,65 +113,47 @@ const setCart = objeto =>{
 
     if(cartList.hasOwnProperty(producto.id)){
         producto.quantity = cartList[producto.id].quantity + 1
+       
+        console.log("rescribir")
+
+
+       
     }
-
-    cartList[producto.id] = {...producto}
-    console.log(cartList)
+     if(!(producto.id in cartList)){
+        var productsCartDiv = document.querySelector('.cart-products-card')
+        var productsPriceDiv = document.querySelector('.cart-products-total')
+        let p = document.createElement("p")
+        p.innerHTML = producto.title
+        productsCartDiv.appendChild(p)
+        var x = document.createElement("SPAN")
+        x.innerHTML = `x${producto.quantity}`
+        x.setAttribute('id', 'cantidad')
+        p.appendChild(x)
+        var a = document.createElement("p")
+        price =  parseInt(producto.price)
+        a.innerHTML = price
+        productsPriceDiv.appendChild(a)
+    }else{
+        console.log(`x${producto.quantity}`)
+       
+        
+        
+        
+         
+      
+         
     
-}
+        }
 
-    
+        cartList[producto.id] = {...producto}
+        
 
-
-
-function addToCart (){
-
-    console.log(buttonBuy.parentNode.id)
-    
-    
-    
-
-}
-
- /* function addToCart (){
-    let productTitle = products
-    let productPrice = document.getElementById('product-price').innerHTML
-    let productsCartDiv = document.querySelector('.cart-products-card')
-    let productsPriceDiv = document.querySelector('.cart-products-total')
-
-    
-   
-    
-
-    
-
-
-    
-
-    let p = document.createElement("p")
-    let x = document.createElement("SPAN")
-    let a = document.createElement("p")
-
-    
-    
-    x.innerHTML = `x${1}`
-    a.innerHTML = productPrice
-    
-
-
-    productsCartDiv.appendChild(p)
-    p.appendChild(x)
-
-    
-    
-    productsPriceDiv.appendChild(a)
-    
-    
-
-    
-
-    
+        
 }
 
 
- */
+
+    
+
+
+
