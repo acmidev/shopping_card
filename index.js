@@ -4,8 +4,12 @@ const closeCart = document.getElementById('close-cart')
 const cart = document.querySelector('.cart-icon')
 const cartCard = document.querySelector('.buy-card')
 var divInfo = document.getElementsByClassName('card')
+var grid = document.getElementById('grid')
 
 
+//Cart 
+
+let cartList = {}
 
 //Products
 
@@ -32,10 +36,13 @@ var products = {
 
 cart.addEventListener('click', openCart);
 closeCart.addEventListener('click', close)
-
-buttonBuy.forEach(function(currentButton) {
-    currentButton.addEventListener('click', getId)
+grid.addEventListener('click', e => {
+    addCart(e)
 })
+
+/* buttonBuy.forEach(function(currentButton) {
+    currentButton.addEventListener('click', getId)
+}) */
 
 
 
@@ -79,17 +86,39 @@ function close () {
 
 
 
+//agregar al carrito
 
+const addCart = e => {
+    //console.log(e.target)
+   // console.log(e.target.classList.contains('buy'))
+    if(e.target.classList.contains('buy')){
+        setCart(e.target.closest('.container'))
+        
+    }
+    e.stopPropagation()
+}
 
-function getId(){
-    let id = document.getElementById('122')
-    let child_nodes = id.child_nodes
-    console.log(id)
+const setCart = objeto =>{
+    console.log(objeto)
+    const producto = {
+        id: objeto.querySelector('.buy').id,
+        title: objeto.querySelector('.product-title').textContent,
+        price: objeto.querySelector('#product-price').textContent,
+        quantity: 1
+    }
+
+    if(cartList.hasOwnProperty(producto.id)){
+        producto.quantity = cartList[producto.id].quantity + 1
+    }
+
+    cartList[producto.id] = {...producto}
+    console.log(cartList)
+    
+}
+
     
 
 
-  
-}
 
 function addToCart (){
 
